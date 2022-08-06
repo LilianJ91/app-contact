@@ -92,6 +92,40 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+				<version>${jooq.version}</version>
+				<configuration>
+					<!-- TODO use application.yml properties instead of hardcoded ones-->
+					<jdbc>
+						<driver>org.postgresql.Driver</driver>
+						<url>jdbc:postgresql://localhost:5432/lilianj91</url>
+						<user>app-contact</user>
+						<password>should-be-injected-by-the-CI</password>
+					</jdbc>
+					<generator>
+						<database>
+							<name>org.jooq.meta.postgres.PostgresDatabase</name>
+							<inputSchema>contact</inputSchema>
+							<excludes>FLYWAY_SCHEMA_HISTORY</excludes>
+						</database>
+						<target>
+							<packageName>com.lilianj91.appcontact.generated.jooq</packageName>
+							<directory>src/main/java</directory>
+						</target>
+					</generator>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jooq-gen</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven-checkstyle-plugin.version}</version>
@@ -112,15 +146,16 @@
 					<sourceDirectories>
 						<sourceDirectory>${project.basedir}/src</sourceDirectory>
 					</sourceDirectories>
+					<excludes>**/generated/**/*</excludes>
 				</configuration>
 				<executions>
-					<execution>
-						<id>checkstyle-validation</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
+				        <execution>
+				                <id>checkstyle-validation</id>
+				                <phase>validate</phase>
+				                <goals>
+				                        <goal>check</goal>
+				                </goals>
+				        </execution>
 				</executions>
 			</plugin>
 		</plugins>
