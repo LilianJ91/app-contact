@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/lilianj91}
+    username: ${SPRING_DATASOURCE_USERNAME:app-contact}
+    password: ${SPRING_DATASOURCE_USERNAME:should-be-injected-by-the-CI}
+  flyway:
+    schemas: contact

@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'app-contact-standalone:latest'
+    build:
+      context: .
+    ports:
+        - 8080:8080
+    container_name: app-contact
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/lilianj91
+      - SPRING_DATASOURCE_USERNAME=app-contact
+      - SPRING_DATASOURCE_PASSWORD=should-be-injected-by-the-CI
+          
+  postgres:
+    image: 'postgres:13.1-alpine'
+    ports:
+        - 5432:5432
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=lilianj91
+      - POSTGRES_USER=app-contact
+      - POSTGRES_PASSWORD=should-be-injected-by-the-CI
