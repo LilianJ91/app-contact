@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("contacts")
 class ContactController {
 
-	@GetMapping("/")
-	Contact getContact() {
-		return new Contact(
-				"firstName",
-				"lastName",
-				"fullName",
-				"address",
-				"email",
-				"mobilePhoneNumber");
-	}
+    @GetMapping("/")
+    Contact getContact() {
+        return new Contact(
+                "firstName",
+                "lastName",
+                "fullName",
+                "address",
+                "email",
+                "mobilePhoneNumber");
+    }
 }
