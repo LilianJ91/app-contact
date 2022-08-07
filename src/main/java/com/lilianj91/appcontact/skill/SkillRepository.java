@@ -34,7 +34,10 @@ class SkillRepository {
                 .join(SKILL)
                 .on(CONTACT_SKILL.FK_SKILL_NAME.eq(SKILL.NAME))
                 .where(CONTACT_SKILL.FK_CONTACT_EMAIL.eq(email))
-                .fetch(skillMapper);
+                .fetchInto(ContactSkillRecord.class)
+                .stream()
+                .map(skillMapper)
+                .toList();
     }
 
     void upsertSkills(String email, List<Skill> skills) {

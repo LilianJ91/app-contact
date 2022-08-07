@@ -10,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.function.Function;
+
 @Component
-class SkillMapper implements RecordMapper<Record, Skill> {
+class SkillMapper implements Function<ContactSkillRecord, Skill> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SkillMapper.class);
 
@@ -22,14 +24,11 @@ class SkillMapper implements RecordMapper<Record, Skill> {
     }
 
     @Override
-    public Skill map(Record record) {
-
-        ContactSkillRecord contactSkillRecord = record.into(ContactSkillRecord.class);
-        SkillRecord skillRecord = record.into(SkillRecord.class);
+    public Skill apply(ContactSkillRecord contactSkillRecord) {
 
         try {
             return new Skill(
-                    skillRecord.getName(),
+                    contactSkillRecord.getFkSkillName(),
                     jsonbMapper.map(contactSkillRecord.getLevel(), Level.class));
         } catch (JsonProcessingException exception) {
             LOGGER.warn("Fail to deserialise level: {}", contactSkillRecord.getLevel(), exception);
