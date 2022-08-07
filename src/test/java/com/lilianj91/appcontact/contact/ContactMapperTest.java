@@ -52,7 +52,6 @@ class ContactMapperTest {
                 () -> assertEquals(fullName, contact.fullName()),
                 () -> assertEquals(now, contact.birthDate()),
                 () -> assertEquals(address, contact.address()),
-                () -> assertEquals(email, contact.email()),
                 () -> assertEquals(mobilePhoneNumber, contact.mobilePhoneNumber())
         );
     }

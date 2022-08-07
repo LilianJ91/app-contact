@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -30,7 +28,7 @@ class ContactServiceTest {
         // Given
         String email = "email";
 
-        Contact contact = new ContactFixture(email).getContact();
+        Contact contact = new ContactFixture().getContact();
         when(contactRepository.findContactByEmail(email)).thenReturn(Optional.of(contact));
 
         // When / Then
@@ -51,13 +49,14 @@ class ContactServiceTest {
     @Test
     void upsertContact() {
         // Given
-        Contact contact = new ContactFixture("email").getContact();
+        String email = "email";
+        Contact contact = new ContactFixture().getContact();
 
         // When
-        contactService.upsertContact(contact);
+        contactService.upsertContact(email, contact);
 
         // Then
-        verify(contactRepository).upsertContact(eq(contact));
+        verify(contactRepository).upsertContact(eq(email), eq(contact));
     }
 
     @Test

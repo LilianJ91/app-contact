@@ -1,3 +1,5 @@
 package com.lilianj91.appcontact.skill;
 
-record Skill(String name, Level level) { }
+import javax.validation.constraints.NotBlank;
+
+record Skill(@NotBlank String name, Level level) { }

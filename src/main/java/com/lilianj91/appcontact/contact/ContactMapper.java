@@ -17,7 +17,6 @@ class ContactMapper implements RecordMapper<ContactRecord, Contact> {
                         ? contactRecord.getBirthDate().toInstant()
                         : null,
                 contactRecord.getAddress(),
-                contactRecord.getEmail(),
                 contactRecord.getMobilePhoneNumber());
     }
 }

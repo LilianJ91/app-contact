@@ -29,8 +29,8 @@ public class ContactService {
     }
 
     @Transactional
-    public void upsertContact(Contact contact) {
-        contactRepository.upsertContact(contact);
+    public void upsertContact(String email, Contact contact) {
+        contactRepository.upsertContact(email, contact);
     }
 
     @Transactional

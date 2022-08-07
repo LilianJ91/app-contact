@@ -40,7 +40,7 @@ class ContactRepository {
                 .map(contactMapper::map);
     }
 
-    void upsertContact(Contact contact) {
+    void upsertContact(String email, Contact contact) {
         dslContext.insertInto(CONTACT_)
                 .columns(contactFields)
                 .values(
@@ -49,7 +49,7 @@ class ContactRepository {
                         contact.fullName(),
                         toUTCDateTime(contact.birthDate()),
                         contact.address(),
-                        contact.email(),
+                        email,
                         contact.mobilePhoneNumber()
                 ).onConflict(CONTACT_.EMAIL)
                 .doUpdate()

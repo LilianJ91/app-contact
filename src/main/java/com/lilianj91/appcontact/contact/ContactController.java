@@ -1,6 +1,7 @@
 package com.lilianj91.appcontact.contact;
 
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+
 @RestController
 @RequestMapping("contacts")
+@Validated
 class ContactController {
 
     private final ContactService contactService;
@@ -20,17 +25,17 @@ class ContactController {
     }
 
     @GetMapping("/{email}")
-    Contact getContact(@PathVariable String email) {
+    Contact getContact(@Email @PathVariable String email) {
         return contactService.getContact(email);
     }
 
     @PostMapping("/{email}")
-    void upsertContact(@PathVariable String email, @RequestBody Contact contact) {
-        contactService.upsertContact(contact);
+    void upsertContact(@Email @PathVariable String email, @Valid @RequestBody Contact contact) {
+        contactService.upsertContact(email, contact);
     }
 
     @DeleteMapping("/{email}")
-    void deleteContact(@PathVariable String email) {
+    void deleteContact(@Email @PathVariable String email) {
         contactService.deleteContact(email);
     }
 }

@@ -9,16 +9,15 @@ public class ContactFixture
     private String fullName;
     private Instant birthDate;
     private String address;
-    private String email;
     private String mobilePhoneNumber;
 
-    ContactFixture(String email) {
+    ContactFixture() {
         this.firstName = "firstName";
         this.lastName = "lastName";
         this.fullName = "fullName";
         this.birthDate = Instant.now();
-        this.email = email;
-        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.address = "address";
+        this.mobilePhoneNumber = "mobilePhoneNumber";
     }
 
     Contact getContact() {
@@ -26,9 +25,8 @@ public class ContactFixture
                 firstName,
                 lastName,
                 fullName,
-                 birthDate,
+                birthDate,
                 address,
-                email,
                 mobilePhoneNumber
         );
     }
