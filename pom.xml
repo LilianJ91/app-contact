@@ -20,6 +20,7 @@
 		<java.version>17</java.version>
 		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
 		<maven.sevntu-checkstyle-check.checkstyle.version>10.3.2</maven.sevntu-checkstyle-check.checkstyle.version>
+		<springdoc.version>1.6.9</springdoc.version>
 	</properties>
 
 	<dependencies>
@@ -66,6 +67,13 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- SWAGGER -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc.version}</version>
 		</dependency>
 
 		<!-- TESTS -->
