@@ -14,8 +14,7 @@ Make sure your [Maven](https://maven.apache.org/download.cgi) executable uses th
 ```mvn --version```
 
 ### Steps
-To containerize the application, it is first necessary to package it. 
-TODO : explains no need to skipTest thanks to testContainer.
+To containerize the application, it is first necessary to package it.
 
 Run the following command at the root of the project :
 
