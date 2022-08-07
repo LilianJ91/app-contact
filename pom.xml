@@ -88,6 +88,7 @@
 				<version>${jooq.version}</version>
 				<configuration>
 					<!-- TODO use application.yml properties instead of hardcoded ones-->
+					<!-- TODO use profile to decide when to activate this goal-->
 					<jdbc>
 						<driver>org.postgresql.Driver</driver>
 						<url>jdbc:postgresql://localhost:5432/lilianj91</url>
@@ -106,15 +107,6 @@
 						</target>
 					</generator>
 				</configuration>
-				<executions>
-					<execution>
-						<id>jooq-gen</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
