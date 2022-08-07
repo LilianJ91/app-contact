@@ -1,7 +1,6 @@
 package com.lilianj91.appcontact.skill;
 
-public class SkillFixture
-{
+public class SkillFixture {
     private String name;
     private Level level;
 

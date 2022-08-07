@@ -1,17 +1,16 @@
 package com.lilianj91.appcontact.contact;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.lilianj91.appcontact.generated.jooq.tables.records.ContactRecord;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.Instant;
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class ContactMapperTest {

@@ -1,5 +1,8 @@
 package com.lilianj91.appcontact.skill;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lilianj91.appcontact.common.JsonbMapper;
 import com.lilianj91.appcontact.generated.jooq.tables.records.ContactSkillRecord;
@@ -10,9 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SkillMapperTest {

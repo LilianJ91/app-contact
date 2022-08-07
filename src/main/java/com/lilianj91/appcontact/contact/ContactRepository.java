@@ -3,7 +3,6 @@ package com.lilianj91.appcontact.contact;
 import static com.lilianj91.appcontact.generated.jooq.Tables.CONTACT_;
 
 import com.lilianj91.appcontact.generated.jooq.tables.records.ContactRecord;
-
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -47,7 +46,7 @@ class ContactRepository {
                         contact.firstName(),
                         contact.lastName(),
                         contact.fullName(),
-                        toUTCDateTime(contact.birthDate()),
+                        toUtcDateTime(contact.birthDate()),
                         contact.address(),
                         email,
                         contact.mobilePhoneNumber()
@@ -56,7 +55,7 @@ class ContactRepository {
                 .set(CONTACT_.FIRST_NAME, contact.firstName())
                 .set(CONTACT_.LAST_NAME, contact.lastName())
                 .set(CONTACT_.FULL_NAME, contact.fullName())
-                .set(CONTACT_.BIRTH_DATE, toUTCDateTime(contact.birthDate()))
+                .set(CONTACT_.BIRTH_DATE, toUtcDateTime(contact.birthDate()))
                 .set(CONTACT_.ADDRESS, contact.address())
                 .set(CONTACT_.MOBILE_PHONE_NUMBER, contact.mobilePhoneNumber())
                 .execute();
@@ -75,7 +74,7 @@ class ContactRepository {
                         .where(CONTACT_.EMAIL.eq(email)));
     }
 
-    private OffsetDateTime toUTCDateTime(Instant instant) {
+    private OffsetDateTime toUtcDateTime(Instant instant) {
         if (instant == null) {
             return null;
         }

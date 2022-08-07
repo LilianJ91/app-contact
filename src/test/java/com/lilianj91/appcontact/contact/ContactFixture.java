@@ -2,8 +2,7 @@ package com.lilianj91.appcontact.contact;
 
 import java.time.Instant;
 
-public class ContactFixture
-{
+public class ContactFixture {
     private String firstName;
     private String lastName;
     private String fullName;
